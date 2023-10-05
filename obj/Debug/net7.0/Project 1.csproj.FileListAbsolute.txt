@@ -1,0 +1,14 @@
+C:\Users\joest\COPADS\Project 1\bin\Debug\net7.0\Project 1.exe
+C:\Users\joest\COPADS\Project 1\bin\Debug\net7.0\Project 1.deps.json
+C:\Users\joest\COPADS\Project 1\bin\Debug\net7.0\Project 1.runtimeconfig.json
+C:\Users\joest\COPADS\Project 1\bin\Debug\net7.0\Project 1.dll
+C:\Users\joest\COPADS\Project 1\bin\Debug\net7.0\Project 1.pdb
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\Project 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\Project 1.AssemblyInfoInputs.cache
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\Project 1.AssemblyInfo.cs
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\Project 1.csproj.CoreCompileInputs.cache
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\Project 1.dll
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\refint\Project 1.dll
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\Project 1.pdb
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\Project 1.genruntimeconfig.cache
+C:\Users\joest\COPADS\Project 1\obj\Debug\net7.0\ref\Project 1.dll
