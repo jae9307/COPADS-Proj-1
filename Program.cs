@@ -24,13 +24,12 @@ namespace DirectoryCounter {
         private static void helpMessage()
         {
             System.Console.Write(@"Usage: du[-s][-d][-b] < path >
-                                Summarize disk usage of the set of FILES, recursively for directories.
-                                1
-                                You MUST specify one of the parameters, -s, -d, or - b
-                                - s Run in single threaded mode
-                                - d Run in parallel mode(uses all available processors)
-                                - b Run in both parallel and single threaded mode.
-                                Runs parallel followed by sequential mode");
+Summarize disk usage of the set of FILES, recursively for directories.
+You MUST specify one of the parameters, -s, -d, or - b
+- s Run in single threaded mode
+- d Run in parallel mode(uses all available processors)
+- b Run in both parallel and single threaded mode.
+Runs parallel followed by sequential mode");
         }
         
         private void parallelCount(string path) {
@@ -95,7 +94,7 @@ namespace DirectoryCounter {
             double timeElapsed = stopwatch.Elapsed.TotalSeconds;
 
             System.Console.WriteLine($"Parallel Calculated in: {timeElapsed}");
-            System.Console.WriteLine($"{parallel.numFolders} folders, {parallel.numFiles} files, {parallel.numBytes} bytes");
+            System.Console.WriteLine($"{String.Format("{0:#,##0}", parallel.numFolders)} folders, {String.Format("{0:#,##0}", parallel.numFiles)} files, {String.Format("{0:#,##0}", parallel.numBytes)} bytes");
         }
 
         private static void runSequential(string path)
@@ -110,10 +109,15 @@ namespace DirectoryCounter {
             double timeElapsed = stopwatch.Elapsed.TotalSeconds;
 
             System.Console.WriteLine($"Sequential Calculated in: {timeElapsed}");
-            System.Console.WriteLine($"{sequential.numFolders} folders, {sequential.numFiles} files, {sequential.numBytes} bytes");
+            System.Console.WriteLine($"{String.Format("{0:#,##0}", sequential.numFolders)} folders, {String.Format("{0:#,##0}", sequential.numFiles)} files, {String.Format("{0:#,##0}", sequential.numBytes)} bytes");
         }
         
         public static void Main(string[] args) {
+            if (args.Length < 2)
+            {
+                helpMessage();
+                return;
+            }
             string mode = args[0];
             string path = args[1];
             // string root = Directory.GetDirectoryRoot(path);
@@ -130,7 +134,7 @@ namespace DirectoryCounter {
             }
             else
             {
-                Console.WriteLine("Fail!");
+                helpMessage();
             }
         }
     }
