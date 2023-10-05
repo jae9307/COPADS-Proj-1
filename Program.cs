@@ -11,7 +11,7 @@ namespace DirectoryCounter {
     class Counter {
         private int numFolders;
         private int numFiles;
-        private int numBytes;
+        private long numBytes;
         private readonly object updateLock = new object();
 
         private Counter()
@@ -34,14 +34,15 @@ namespace DirectoryCounter {
         }
         
         private void parallelCount(string path) {
+            DirectoryInfo di = new DirectoryInfo(path);
             try 
             {
-                string[] dirs = Directory.GetDirectories(path);
+                DirectoryInfo[] dirs = di.GetDirectories();
                 Parallel.ForEach(dirs, dir => {
-                    parallelCount(dir);
+                    parallelCount(dir.ToString());
                 });
 
-                string[] files = Directory.GetFiles(path);
+                FileInfo[] files = di.GetFiles();
                 Parallel.ForEach(files, file => {
                     lock(updateLock)
                     {
@@ -61,16 +62,17 @@ namespace DirectoryCounter {
         }
 
         private void sequentialCount(string path) {
+            DirectoryInfo di = new DirectoryInfo(path);
             try
             {
-                string[] dirs = Directory.GetDirectories(path);
-                foreach (string dir in dirs)
+                DirectoryInfo[] dirs = di.GetDirectories();
+                foreach (DirectoryInfo dir in dirs)
                 {
-                    parallelCount(dir);
+                    sequentialCount(dir.ToString());
                 }
 
-                string[] files = Directory.GetFiles(path);
-                foreach (string file in files)
+                FileInfo[] files = di.GetFiles();
+                foreach (FileInfo file in files)
                 {
                     this.numFiles++;
                     this.numBytes += file.Length;
