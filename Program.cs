@@ -90,7 +90,7 @@ namespace DirectoryCounter {
             parallel.parallelCount(path);
 
             stopwatch.Stop();
-            long timeElapsed = stopwatch.ElapsedMilliseconds;
+            double timeElapsed = stopwatch.Elapsed.TotalSeconds;
 
             System.Console.WriteLine($"Parallel Calculated in: {timeElapsed}");
             System.Console.WriteLine($"{parallel.numFolders} folders, {parallel.numFiles} files, {parallel.numBytes} bytes");
@@ -105,7 +105,7 @@ namespace DirectoryCounter {
             sequential.sequentialCount(path);
 
             stopwatch.Stop();
-            long timeElapsed = stopwatch.ElapsedMilliseconds;
+            double timeElapsed = stopwatch.Elapsed.TotalSeconds;
 
             System.Console.WriteLine($"Sequential Calculated in: {timeElapsed}");
             System.Console.WriteLine($"{sequential.numFolders} folders, {sequential.numFiles} files, {sequential.numBytes} bytes");
